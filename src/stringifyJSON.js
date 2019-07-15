@@ -5,7 +5,7 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
-  if (typeof obj === 'null') {
+  if (obj === null) {
     return 'null';
   } else if (typeof obj === 'undefined' || typeof obj === 'function') {
     return undefined;
@@ -33,7 +33,9 @@ var stringifyJSON = function(obj) {
     var result = '{'
     
     for (var key in obj) {
-      result += stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + ','
+      if (stringifyJSON(obj[key]) !== undefined){
+        result += stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + ',';
+      }
     }
     
     if (result.length > 1) {
