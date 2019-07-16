@@ -11,14 +11,14 @@ var getElementsByClassName = function(className) {
   // create recurse function with input => node
   var findClassName = function(node) {
     // for through document body childNodes
-    if (node.classList.contains(className)) {
+    if (node.classList && node.classList.contains(className)) {
       // recurse childNode into function
       results.push(node);
     }
     // if hasChildNodes is equal to true
     if (node.hasChildNodes()) {
         for (var i = 0; i < node.childNodes.length; i++) {
-          findClassName(node[i]);
+            findClassName(node.childNodes[i]);
         }
     }
   }
